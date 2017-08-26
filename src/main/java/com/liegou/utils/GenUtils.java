@@ -123,7 +123,7 @@ public class GenUtils {
 			
 			try {
 				//添加到zip
-				zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"))));  
+				zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("modules"))));
 				IOUtils.write(sw.toString(), zip, "UTF-8");
 				IOUtils.closeQuietly(sw);
 				zip.closeEntry();
@@ -165,7 +165,7 @@ public class GenUtils {
 	/**
 	 * 获取文件名
 	 */
-	public static String getFileName(String template, String className, String packageName){
+	public static String getFileName(String template, String className, String packageName, String modules){
 		String packagePath = "main" + File.separator + "java" + File.separator;
 		if(StringUtils.isNotBlank(packageName)){
 			packagePath += packageName.replace(".", File.separator) + File.separator;
@@ -192,17 +192,17 @@ public class GenUtils {
 		}
 
 		if(template.contains("Dao.xml.vm")){
-			return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
+			return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + modules + File.separator + className + "Dao.xml";
 		}
 
 		if(template.contains("list.html.vm")){
 			return "main" + File.separator + "resources" + File.separator + "views" + File.separator
-					+ "modules" + File.separator + "generator" + File.separator + className.toLowerCase() + ".html";
+					+ "modules" + File.separator + modules + File.separator + className.toLowerCase() + ".html";
 		}
 		
 		if(template.contains("list.js.vm")){
 			return "main" + File.separator + "resources" + File.separator + "static" + File.separator + "js" + File.separator
-					+ "modules" + File.separator + "generator" + File.separator + className.toLowerCase() + ".js";
+					+ "modules" + File.separator + modules + File.separator + className.toLowerCase() + ".js";
 		}
 
 		if(template.contains("menu.sql.vm")){
