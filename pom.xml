@@ -34,6 +34,8 @@
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
         <aliyun.oss.version>2.5.0</aliyun.oss.version>
         <qcloud.cos.version>4.4</qcloud.cos.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <velocity.version>1.7</velocity.version>
 
         <!--wagon plugin 配置-->
         <service-path>/work/renren</service-path>
@@ -157,6 +159,16 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>velocity</artifactId>
+            <groupId>org.apache.velocity</groupId>
+            <version>${velocity.version}</version>
         </dependency>
     </dependencies>
 

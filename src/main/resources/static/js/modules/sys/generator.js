@@ -9,11 +9,11 @@ $(function () {
 			{ label: '创建时间', name: 'createTime', width: 100 }
         ],
 		viewrecords: true,
-        height: 385,
+        height: 600,
         rowNum: 10,
 		rowList : [10,30,50,100,200],
         rownumbers: true, 
-        rownumWidth: 25, 
+        rownumWidth: 35,
         autowidth:true,
         multiselect: true,
         pager: "#jqGridPager",
@@ -49,13 +49,13 @@ var vm = new Vue({
                 page:1 
             }).trigger("reloadGrid");
 		},
-		generator: function() {
-			var tableNames = getSelectedRows();
-			if(tableNames == null){
-				return ;
-			}
-			location.href = baseURL + "sys/generator/code?tables=" + JSON.stringify(tableNames);
-		}
+        generator: function () {
+            var tableNames = getSelectedRows();
+            if(tableNames == null){
+                return ;
+            }
+            location.href = baseURL + "sys/generator/code?token=" + token + "&tables=" + JSON.stringify(tableNames);
+        }
 	}
 });
 
